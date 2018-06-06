@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar color="secondary">
+        <ion-title>Prenotazione</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-item name="item1" placeholder ="giorno">
+  <ion-label fixed>Data</ion-label>
+  <ion-input [(ngModel)]="prenop.data" type="date" name="giorno" ></ion-input>
+  <input type="reset"  value="Resetta il form"> 
+  <input type="submit" value="Invia">
+</ion-item>
+    <ion-item name="item2" placeholder="ora">
+  <ion-label fixed>Ora</ion-label>
+  <ion-input [(ngModel)]="prenop.ora" type="time" name="ora"></ion-input>
+</ion-item>
+    
+    <div>
+        <button ion-button block color="secondary" (click)="AggiungiPrenotazione(prenop.data,prenop.ora)"> PRENOTA </button>
+    </div>
+</ion-content>

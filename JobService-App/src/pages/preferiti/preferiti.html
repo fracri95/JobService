@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar color="secondary" >
+      <ion-title>Archivio Preferiti</ion-title> 
+       <ion-buttons end>
+           
+            
+
+            <button  ion-button icon-only icon-right (click)="Ricerca()"> <ion-icon md="md-search"></ion-icon></button>
+        </ion-buttons>
+    
+  </ion-navbar>
+</ion-header>
+       
+
+<ion-content>
+    <div [ngSwitch]="Preferito">
+
+        <ion-list>
+
+            <ion-item class="item_prof" (click)='professionistainfo(preferito.professionista.idProfessionista);' *ngFor="let preferito of preferiti">
+                <ion-thumbnail item-start>
+                    <img src="assets/icon/logo.jpg">
+                </ion-thumbnail>
+                      <p class="detail">Nome: {{preferito.professionista.nomeprofessionista}} </p>
+                      <p class ="detail">Cognome: {{preferito.professionista.cognomeprofessionista}}</p>
+                      <p class="detail"> Categoria: {{preferito.professionista.idCategoria.nome}}</p>
+            </ion-item>
+
+            <div padding text-justify *ngIf="preferiti.length == 0">
+                <ion-card color="light_dark">
+                    <ion-card-header>
+                        Attenzione!
+                    </ion-card-header>
+                    <ion-card-content>
+                        Al momento non hai preferiti.
+                    </ion-card-content>
+                </ion-card>
+            </div>
+        </ion-list>
+    </div>
+</ion-content>

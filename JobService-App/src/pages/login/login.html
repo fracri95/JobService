@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon id="right" name="menu"></ion-icon>
+    </button>
+      <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    
+    <div class="logo-container">
+                <img src="assets/icon/logo.jpg" alt=""/>
+    </div>
+    
+    <ion-list no-lines> 
+                <ion-item>
+                     <ion-input type="text" placeholder="Username" [(ngModel)]="username"></ion-input>
+                     <ion-icon name="person" class="ion-lock" item-left padding-right color="secondary"></ion-icon>
+                </ion-item>
+
+                <ion-item>
+                    <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+                    <ion-icon name="lock" class="ion-lock" item-left padding-right color="secondary"></ion-icon>
+                </ion-item>
+    </ion-list>
+    
+        <button ion-button block color="secondary" (click)="login()">{{ 'LOGIN' }}</button>
+        
+        <button block ion-button clear outline color="secondary" (click)="goSignup()"> Registrati </button>
+        
+</ion-content>

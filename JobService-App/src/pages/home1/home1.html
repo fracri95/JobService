@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar color="secondary" >
+      <ion-title>Professionisti</ion-title> 
+       <ion-buttons end>
+           
+         
+
+            <button  ion-button icon-only icon-right (click)="Ricerca()"> <ion-icon md="md-search"></ion-icon></button>
+            <button  ion-button icon-only icon-right (click)="login()">LOGIN</button>
+        </ion-buttons>
+    
+  </ion-navbar>
+
+</ion-header>
+       
+
+<ion-content>
+    <div [ngSwitch]="Professionista">
+
+        <ion-list>
+
+            <ion-item class="item_prof" (click)='professionistainfo(profLast.idProfessionista);' *ngFor="let profLast of profLasts">
+                <ion-thumbnail item-start>
+                    <img src="assets/icon/logo.jpg">
+                </ion-thumbnail>
+                      <p class="detail">Nome: {{profLast.nomeprofessionista}} </p>
+                      <p class ="detail">Cognome: {{profLast.cognomeprofessionista}}</p>
+                      <p class="detail"> Età: {{profLast.etaprofessionista}}</p>
+                <p class="detail">Professione: {{profLast.idCategoria.nome}}</p>
+                <p class="detail">Città: {{profLast.citta}}</p>
+            </ion-item>
+
+            <div padding text-justify *ngIf="profLasts.length == 0">
+                <ion-card color="light_dark">
+                    <ion-card-header>
+                        Attenzione!
+                    </ion-card-header>
+                    <ion-card-content>
+                        Al momento non ci sono professionisti disponibili.
+                    </ion-card-content>
+                </ion-card>
+            </div>
+        </ion-list>
+    </div>
+</ion-content>

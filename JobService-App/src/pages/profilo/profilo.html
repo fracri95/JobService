@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar color="secondary" >
+      <ion-title>JobService</ion-title> 
+         
+       <ion-buttons end>
+           
+            <button  ion-button icon-only icon-right (click)="AggiungiPreferito()"> <ion-icon md="md-heart-outline"> </ion-icon></button>
+
+            <button  ion-button icon-only icon-right (click)="ricerca()"> <ion-icon md="md-search"></ion-icon></button>
+        </ion-buttons>
+    
+  </ion-navbar>
+</ion-header>
+       
+
+    <img src="assets/icon/logo.jpg" alt=""/>
+
+<ion-content>
+    <div class="logo-container">
+                <img src="assets/icon/logo.jpg" alt=""/>
+    </div>
+    <ion-card>
+        <ion-card-header>
+          Descrizione profilo: 
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list no-lines>
+                <ion-item>Nome: {{professionista.nomeprofessionista}}</ion-item>
+                <ion-item>Cognome: {{professionista.cognomeprofessionista}}</ion-item>
+                <ion-item>Categoria: {{professionista.idCategoria.nome}}</ion-item>
+                <ion-item>Email: {{professionista.emailprofessionista}}</ion-item>
+                <ion-item>Città: {{professionista.citta}}</ion-item>
+                <ion-item>Telefono: {{professionista.telefonoprofessionista}}</ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    
+    <button ion-button block icon-left color="secondary" (click)="prenota(professionista.idProfessionista)"> <ion-icon name="calendar"></ion-icon>PRENOTA</button>
+    <button ion-button block icon-left color="call" (click)="chiama(professionista.telefonoprofessionista)"> <ion-icon name="ios-call"></ion-icon>CHIAMA</button>
+    <button ion-button block icon-left color="message" (click)="messaggio(professionista.telefonoprofessionista)"> <ion-icon name="md-mail"></ion-icon> MESSAGGIO</button>
+
+</ion-content>

@@ -1,0 +1,65 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+     <ion-title>{{ 'PROFILO' }}</ion-title>
+     <ion-buttons end>
+         <button  ion-button icon-only icon-right (click)="ricerca()"> <ion-icon name="search"></ion-icon></button> 
+                 <button ion-button icon-only (click)="editable = true" [hidden]="editable"><ion-icon name="md-create"></ion-icon></button>
+
+            <button ion-button icon-only (click)="logout()" [hidden]="editable"><ion-icon name="md-power"></ion-icon></button>
+
+            <button ion-button icon-only (click)="salva()" [hidden]="!editable">{{ 'SALVA'}}</button>
+     </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="logo-container">
+                <img src="assets/icon/logo.jpg" alt=""/>
+                <p (click)="openGallery()"> Modifica immagine </p>
+    </div>    
+<div class="container-form">
+    
+      <ion-list>
+            <ion-item>
+                <ion-label stacked>{{ 'USERNAME' }}</ion-label>
+                <ion-input type="text" [disabled]="!editable" [(ngModel)]="utente.username"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>{{ 'EMAIL' }}</ion-label>
+                <ion-input type="text" [disabled]="!editable" [(ngModel)]="utente.email"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>{{ 'NOME'}}</ion-label>
+                <ion-input type="text" disabled="true" [(ngModel)]="utente.nome"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>{{ 'COGNOME'}}</ion-label>
+                <ion-input type="text" disabled="true" [(ngModel)]="utente.cognome"></ion-input>
+            </ion-item>
+             <ion-item>
+                <ion-label stacked>{{ 'DATA DI NASCITA'}}</ion-label>
+                <ion-input type="text" disabled="true" [(ngModel)]="utente.datadinascita"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>{{ 'NUMERO DI TELEFONO'}}</ion-label>
+                <ion-input type="text" [disabled]="!editable" [(ngModel)]="utente.telefono"></ion-input>
+            </ion-item>
+                      <ion-item>
+                <ion-label stacked>{{ 'ET&Agrave;'}}</ion-label>
+                <ion-input type="text" disabled="true" [(ngModel)]="utente.eta"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>{{ 'CITT&Agrave;'}}</ion-label>
+                <ion-input type="text" [disabled]="!editable" [(ngModel)]="utente.citta"></ion-input>
+            </ion-item>
+      </ion-list>
+
+</div>
+

@@ -1,0 +1,14 @@
+{
+  "name": "JobService",
+  "app_id": "cb76beff",
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://localhost:8080/jobservice/api"
+    }
+  ],
+  "integrations": {
+    "cordova": {}
+  }
+}

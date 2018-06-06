@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar color="secondary" >
+      <ion-title>Archivio Prenotazioni</ion-title> 
+       <ion-buttons end>
+           
+            
+
+            <button  ion-button icon-only icon-right (click)="Ricerca()"> <ion-icon md="md-search"></ion-icon></button>
+        </ion-buttons>
+    
+  </ion-navbar>
+</ion-header>
+       
+
+<ion-content>
+    <div [ngSwitch]="Prenotazione">
+
+        <ion-list>
+
+            <ion-item (click)='professionistainfo(prenotazione.professionista.idProfessionista);' *ngFor="let prenotazione of prenotazioni">
+                <ion-thumbnail item-start>
+                    <img src="assets/icon/logo.jpg">
+                </ion-thumbnail>
+                      <p class="detail">Hai prenotato il: {{prenotazione.data}} </p>
+                      <p class ="detail">Alle: {{prenotazione.ora}}</p>
+                      <p class="detail"> Nome: {{prenotazione.professionista.nomeprofessionista}}</p>
+                       <p class="detail"> Cognome: {{prenotazione.professionista.cognomeprofessionista}}</p>
+            </ion-item>
+
+            <div padding text-justify *ngIf="prenotazioni.length == 0">
+                <ion-card color="light_dark">
+                    <ion-card-header>
+                        Attenzione!
+                    </ion-card-header>
+                    <ion-card-content>
+                        Al momento non hai effettuato prenotazioni.
+                    </ion-card-content>
+                </ion-card>
+            </div>
+        </ion-list>
+    </div>
+</ion-content>

@@ -1,0 +1,5 @@
+it\univaq\disim\mobile\jobservice\business\impl\SessioneRepository.class
+it\univaq\disim\mobile\jobservice\business\impl\PreferitoRepository.class
+it\univaq\disim\mobile\jobservice\business\impl\UtenteRepository.class
+it\univaq\disim\mobile\jobservice\business\impl\JobServiceServiceImpl.class
+it\univaq\disim\mobile\jobservice\web\ProfessionistaController.class

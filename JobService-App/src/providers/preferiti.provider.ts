@@ -32,6 +32,9 @@ private _preferiti: Array<Preferito> = null;
     )
     {
     console.log('Hello Preferiti Provider');
+    this._sAccount.events.subscribe('utente:logout', () => {
+            this._preferiti = null;
+        });
     }
     
     
@@ -58,10 +61,12 @@ private _preferiti: Array<Preferito> = null;
     
         }
 
-   getPreferiti(): Promise<Array<Preferito>>{
+
+  getPreferiti(): Promise<Array<Preferito>>{
         return new Promise((resolve)=>{
             if (this._preferiti === null){
                 this._preferiti =[];
+      console.log("utente",this._sAccount.getUtente().token );
                 this._http.get(URL_BASE + URL.PREFERITI.GETALL + this._sAccount.getUtente().token.toString()).toPromise()
                 .then((res:Response) =>{
                      const preferiti = res.json() as Array<Preferito>;
@@ -70,7 +75,7 @@ private _preferiti: Array<Preferito> = null;
                             this._preferiti.push(new Preferito(preferito));
                         }
                 resolve(this._preferiti);
-                console.log(this._preferiti,'preferiti')
+                console.log(this._preferiti,'effettuato')
                 })
              .catch(() => resolve(this._preferiti));
             } else {
@@ -80,6 +85,5 @@ private _preferiti: Array<Preferito> = null;
       
 }
                          
-                         
-                          
+        
 }

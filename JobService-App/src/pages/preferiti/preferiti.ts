@@ -10,7 +10,7 @@ import {PreferitiProvider} from '../../providers/preferiti.provider';
 
 @IonicPage()
 @Component({
-  selector: 'page-archivio',
+  selector: 'page-preferiti',
   templateUrl: 'preferiti.html',
 })
 export class PreferitiPage {
@@ -20,20 +20,23 @@ export class PreferitiPage {
     preferiti: Array<Preferito>= new Array();
     
     
-    constructor(
+ constructor(
         public navCtrl: NavController, 
-        public sPreferiti: PreferitiProvider,
+        public sPreferito: PreferitiProvider,
        
         ) {
 
        
-     this.sPreferiti.getPreferiti()
+      this.sPreferito.getPreferiti()
         .then(preferiti => {
         this.preferiti = preferiti;
         console.log("preferiti", this.preferiti);   
         }); 
-           
+         
 }
+
+        
+        
 
     professionistainfo (idProfessionista: number) {
         this.navCtrl.push('ProfiloPage', {paramProfilo: idProfessionista});

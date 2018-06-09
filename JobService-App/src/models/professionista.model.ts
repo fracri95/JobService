@@ -10,6 +10,7 @@ export class Professionista {
     public telefonoprofessionista: string="";
     public idCategoria= new Categoria;
     public emailprofessionista:string= "";
+    public img:string="";
     
     constructor(obj?: any) {
         this.setObj(obj);
@@ -25,6 +26,7 @@ export class Professionista {
             this.telefonoprofessionista = obj.telefonoprofessionista || this.telefonoprofessionista;
             this.emailprofessionista = obj.emailprofessionista || this.emailprofessionista;
             this.idCategoria = obj.idCategoria || this.idCategoria;
+            this.img = obj.img || this.img;
          }
     }
 }

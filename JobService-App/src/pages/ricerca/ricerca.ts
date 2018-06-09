@@ -23,12 +23,14 @@ export class RicercaPage {
    
     nomi : Array<string>; //array x visualizzare i nomi delle categorie	//ok
     cittas: Array<string>; //array x visualizzare le città in cui ci sono prof operanti      //ok           
-    categoriascelta: string=""; 
-    cittascelta:string="";
+    categoriascelta: string; 
+    cittascelta:string;
     idcat: number;
     proffinale: Array<Professionista>; //mi porta in output i professionsiti corrispondenti alla ricerca
     categoria: Categoria= null;
-
+    
+   
+    
         
   constructor(
   public navCtrl: NavController, 
@@ -48,47 +50,19 @@ export class RicercaPage {
       this.cittas= new Array();
       this.sProfessionisti.getCitiesProf().then(citta => {
           this.cittas=citta;});  //ok mi restituisce città //risolto ridondanza
-      this.proffinale= new Array();
-  }
-
-   getprofRicerca(nome:string, citta:string){
-          this.proffinale=[];
-          this.categoriascelta=nome;
-          this.cittascelta=citta;
-          if (this.categoriascelta.length !==0 && this.cittascelta.length !==0){
-              this.sCategorie.getIdCategoria(this.categoriascelta)
-        .then(idcatego=>{
-                      this.idcat=idcatego;
-              console.log("categoria",this.idcat); //ambedue i parametri
-              console.log("citta", this.cittascelta);
-              this.sProfessionisti.getprofByCittaByCategoria(this.idcat, this.cittascelta).then(
-                  profcittacate => {
-        this.proffinale=profcittacate;
-        console.log("risultato",this.proffinale);      
-        })
-        })           
-        } else {
-          if (this.categoriascelta.length==0){           //solo città
-              this.sProfessionisti.getProfBycitta(this.cittascelta).then(profcitta=>{
-                  this.proffinale=profcitta;
-                  console.log(profcitta);
-              })
-          } else {
-              if (this.cittascelta.length==0){  //solo lavoro
-                  this.sCategorie.getIdCategoria(this.categoriascelta).then(idcatego=>{
-                      this.idcat=idcatego;
-                      console.log("idcategoria",this.idcat);
-                      this.sProfessionisti.getprofByCategoria(this.idcat).then(profcatego=>{
-                          this.proffinale=profcatego;
-                          
-                      })
-                  })
-              }
-              } 
-          }
+ 
+        
+        
+        }
+        
+        getRicerca(nome:string, citta:string){
+        this.navCtrl.push('RisultatiPage', {paramCategoria: nome, paramCitta: citta});
+        }
+  
           
           
-      }
+          
+      
        
                   
   ionViewDidLoad() {

@@ -27,31 +27,10 @@
     </ion-select>
   </ion-item>
 
-<p class="warning">Puoi inserire entrambi i paramentri o solo uno dei due!</p>
-    <button ion-button block (click)="getprofRicerca(nome.value,citta.value)" color=secondary> Avvia la ricerca </button>
+<p class="warning">Puoi inserire entrambi i parametri o solo uno dei due!</p>
+    <button ion-button block (click)="getRicerca(nome.value,citta.value)" color=secondary> Avvia la ricerca </button>
     
-    <ion-list>
-        <ion-item *ngFor="let professionista of proffinale " (click)="gotoProfiloPage(professionista.idProfessionista)">
-    <ion-avatar item-start>
-      <img src="assets/icon/logo.jpg">
-    </ion-avatar>
-    <h2>Nome:  {{professionista.nomeprofessionista }}</h2>
-    <h2>Cognome: {{professionista.cognomeprofessionista}}</h2>
-    <h2>Categoria: {{professionista.idCategoria.nome}}</h2>
-    <h2>Citt&agrave;: {{professionista.citta}}</h2>
-    
-  </ion-item>
-    <div padding text-justify *ngIf="proffinale.length == 0">
-                <ion-card color="light_dark">
-                    <ion-card-header>
-                        JobService
-                    </ion-card-header>
-                    <ion-card-content>
-                        Al momento non ci sono professionisti che corrispondono alle tue esigenze
-                    </ion-card-content>
-                </ion-card>
-            </div>
-        </ion-list>
+
 </ion-content>
  
 

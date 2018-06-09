@@ -20,7 +20,7 @@
 
             <ion-item (click)='professionistainfo(prenotazione.professionista.idProfessionista);' *ngFor="let prenotazione of prenotazioni">
                 <ion-thumbnail item-start>
-                    <img src="assets/icon/logo.jpg">
+                    <img  src="{{prenotazione.professionista.img}}">
                 </ion-thumbnail>
                       <p class="detail">Hai prenotato il: {{prenotazione.data}} </p>
                       <p class ="detail">Alle: {{prenotazione.ora}}</p>

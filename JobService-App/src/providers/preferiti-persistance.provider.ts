@@ -33,9 +33,9 @@ export class PreferitiPersistanceProvider implements PreferitiPersistanceInterfa
     get(): Promise<Preferito> {
         return new Promise((resolve, reject) => {
             this._storage.get(STORAGE_KEYS.PREFERITI)
-                .then((Preferito) => {
-                    if (Preferito!== null) {
-                        resolve(Preferito);
+                .then((preferito) => {
+                    if (preferito!== null) {
+                        resolve(preferito);
                     } else
                       {
                         reject();

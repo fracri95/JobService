@@ -21,7 +21,7 @@
 
             <ion-item class="item_prof" (click)='professionistainfo(profLast.idProfessionista);' *ngFor="let profLast of profLasts">
                 <ion-thumbnail item-start>
-                    <img src="assets/icon/logo.jpg">
+                    <img src="{{profLast.img}}">
                 </ion-thumbnail>
                       <p class="detail">Nome: {{profLast.nomeprofessionista}} </p>
                       <p class ="detail">Cognome: {{profLast.cognomeprofessionista}}</p>

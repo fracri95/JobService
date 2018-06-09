@@ -57,7 +57,7 @@ export class AccountProvider {
     
     login(username: string, password: string): Promise<Utente> {
         return new Promise((resolve, reject) => {
-            this._http.post(URL_BASE + URL.USERS.LOGIN, { username, password })
+            this._http.post(URL_BASE + URL.UTENTI.LOGIN, { username, password })
                 .toPromise()
                 .then((res: Response) => {
                     const json = res.json() as ResponseServer;
@@ -76,7 +76,7 @@ export class AccountProvider {
     
     registrati(utente: UserSignupInterface): Promise<any> {
         return new Promise((resolve, reject) => {
-            this._http.post(URL_BASE + URL.USERS.SIGNUP, utente).toPromise()
+            this._http.post(URL_BASE + URL.UTENTI.SIGNUP, utente).toPromise()
                 .then((res: Response) => {
                     const json = res.json() as ResponseServer;
                     
@@ -92,7 +92,7 @@ export class AccountProvider {
     
     update(): Promise<any> {
         return new Promise((resolve, reject) => {
-            this._http.put(URL_BASE + URL.USERS.UPDATE + this._utente.token, this._utente).toPromise()
+            this._http.put(URL_BASE + URL.UTENTI.UPDATE + this._utente.token, this._utente).toPromise()
                 .then((res: Response) => {
                     const json = res.json() as ResponseServer;
                     
@@ -109,7 +109,7 @@ export class AccountProvider {
     
     logout(): Promise<any> { 
         return new Promise((resolve, reject) => {
-            this._http.get(URL_BASE + URL.USERS.LOGOUT + this._utente.token).toPromise()
+            this._http.get(URL_BASE + URL.UTENTI.LOGOUT + this._utente.token).toPromise()
                 .then((res: Response) => {
                     const json = res.json() as ResponseServer;
                     

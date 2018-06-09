@@ -4,10 +4,9 @@ export class Preferito {
 
     
 	
-	public idPreferito: number=0;
+	public idPreferito: number;
         public professionista= new Professionista;
-
-	
+       
 
     
     constructor(obj?: any) {
@@ -16,8 +15,9 @@ export class Preferito {
     
     setObj(obj?: any) {
         if (obj) {
-            this.idPreferito = (typeof obj.idPreferito === "number") ? obj.idPreferito : this.idPreferito;
+           
             this.professionista = obj.professionista || this.professionista;
+            
                        
 
         }

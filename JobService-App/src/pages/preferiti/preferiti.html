@@ -20,11 +20,12 @@
 
             <ion-item class="item_prof" (click)='professionistainfo(preferito.professionista.idProfessionista);' *ngFor="let preferito of preferiti">
                 <ion-thumbnail item-start>
-                    <img src="assets/icon/logo.jpg">
+                    <img src="{{preferito.professionista.img}}">
                 </ion-thumbnail>
                       <p class="detail">Nome: {{preferito.professionista.nomeprofessionista}} </p>
                       <p class ="detail">Cognome: {{preferito.professionista.cognomeprofessionista}}</p>
                       <p class="detail"> Categoria: {{preferito.professionista.idCategoria.nome}}</p>
+                       
             </ion-item>
 
             <div padding text-justify *ngIf="preferiti.length == 0">
@@ -36,7 +37,8 @@
                         Al momento non hai preferiti.
                     </ion-card-content>
                 </ion-card>
-            </div>
+        </div>
+
         </ion-list>
     </div>
 </ion-content>

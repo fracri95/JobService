@@ -69,17 +69,18 @@ export class ProfessionistaProvider {
 
      
     //Recupera i professionisti dal server in base alla categoria  
-    getprofByCategoria(idCategoria: number): Promise<Array<Professionista>>{
+    getprofByCategoria(idcat: number): Promise<Array<Professionista>>{
         return new Promise((resolve)=>{
             if (this.profcategoria=== null){
                 this.profcategoria= [];
-                this._http.get('api/professionisti/categoria/'+idCategoria).toPromise()
+                this._http.get('api/professionisti/categoria/'+idcat).toPromise()
                     .then((res:Response)=>{
                         const professionisti = res.json() as Array<Professionista>;
                         for (let professionista of professionisti){
                             this.profcategoria.push(new Professionista(professionista));
                         }
                         resolve(this.profcategoria);
+                             console.log("proffi",this.profcategoria);
                 })
                     .catch(()=> resolve(this.profcategoria));
             } 
@@ -99,6 +100,7 @@ export class ProfessionistaProvider {
                             this.profcittà.push(new Professionista(professionista));
                         }
                         resolve(this.profcittà);
+                             console.log("proffi",this.profcittà);
                 })
                     .catch(() => resolve(this.profcittà));
             } else {

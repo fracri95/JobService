@@ -60,6 +60,7 @@ export class PrenotazioneProvider {
         return new Promise((resolve)=>{
             if (this._prenotazioni === null){
                 this._prenotazioni =[];
+      console.log("utente",this._sAccount.getUtente().token );
                 this._http.get(URL_BASE + URL.PRENOTAZIONI.GETALL + this._sAccount.getUtente().token.toString()).toPromise()
                 .then((res:Response) =>{
                      const prenotazioni = res.json() as Array<Prenotazione>;

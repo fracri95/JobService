@@ -25,8 +25,9 @@ templateUrl: 'profilo.html',
 })
 export class ProfiloPage {
 
-   professionista= new Professionista();
+professionista= new Professionista();
 prof:ProfessionistaInterface;
+
 idProfessionista: number;
 preferito: PreferitoInterface;
 idpparam:number;
@@ -34,18 +35,19 @@ idpparam:number;
     
     constructor(
     public navCtrl: NavController, 
-              public navParams: NavParams,
-              public sProfessionista: ProfessionistaProvider,
-              public alertCtrl: AlertController,
-              public loadingCtrl: LoadingController,
-              public sAccount: AccountProvider,
+    public navParams: NavParams,
+    public sProfessionista: ProfessionistaProvider,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
+    public sAccount: AccountProvider,
     public sms: SMS, 
     public callNumber: CallNumber, 
     public sPreferito: PreferitiProvider
     ) {
 
     this.idProfessionista = this.navParams.get('paramProfilo'); //Recupero l'id del professionista da dover visualizzare
-    this.sProfessionista.getProf(this.idProfessionista).then(professionista => { //Recupero il professionista
+    this.sProfessionista.getProf(this.idProfessionista)
+    .then(professionista => { //Recupero il professionista
     this.professionista = professionista; //Lo inizializzo
     });
         

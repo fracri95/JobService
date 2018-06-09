@@ -5,7 +5,7 @@ export const URL_BASE = USE_PROXY ? 'api/' : 'http://localhost:8080/jobservice/a
 
 
 export const URL = {
-    USERS: {
+    UTENTI: {
         SIGNUP: "create/",
         LOGIN: "login/",
         LOGOUT: "logout/",

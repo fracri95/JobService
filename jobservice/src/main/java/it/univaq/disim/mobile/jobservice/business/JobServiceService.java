@@ -7,7 +7,6 @@ import it.univaq.disim.mobile.jobservice.business.domain.Utente;
 import it.univaq.disim.mobile.jobservice.business.domain.Categoria;
 import it.univaq.disim.mobile.jobservice.business.domain.Preferito;
 import java.util.List;
-import java.util.Vector;
 
 public interface JobServiceService {
 
@@ -37,6 +36,8 @@ public interface JobServiceService {
     List<Professionista> findProfessionistiCat(Long idcat);
     
     
+        void cancellaPreferito(String token, Long id_preferito);
+    
     List<Professionista> findAllProf(); //tutti
     List<Professionista> findLastProfessionisti(); //id>10
 
@@ -44,8 +45,8 @@ public interface JobServiceService {
      *
      * @return
      */
-    Vector<String> GetAllNomiCat();
-    Vector<String> findAllCityProf();
+    List<String> GetAllNomiCat();
+    List<String> findAllCityProf();
     
     
 }

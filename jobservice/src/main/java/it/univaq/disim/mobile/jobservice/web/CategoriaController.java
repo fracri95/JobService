@@ -4,7 +4,6 @@ package it.univaq.disim.mobile.jobservice.web;
 import it.univaq.disim.mobile.jobservice.business.JobServiceService;
 import it.univaq.disim.mobile.jobservice.business.domain.Categoria;
 import java.util.List;
-import java.util.Vector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,8 +30,8 @@ public class CategoriaController {
     }
     
     @GetMapping("/nomi")
-    public Vector<String> GetAllNCat(){
-    Vector<String> AllNCat= service.GetAllNomiCat();
+    public List<String> GetAllNCat(){
+    List<String> AllNCat= service.GetAllNomiCat();
     return AllNCat;  //ok
     }
     

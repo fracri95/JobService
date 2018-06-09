@@ -12,14 +12,9 @@ import it.univaq.disim.mobile.jobservice.business.domain.Professionista;
 import it.univaq.disim.mobile.jobservice.business.domain.Categoria;
 import it.univaq.disim.mobile.jobservice.business.domain.Preferito;
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Vector;
 
 
-/**
- *
- * @author Stefania
- */
+
 @Service
 @Transactional
 public class JobServiceServiceImpl implements JobServiceService {
@@ -128,15 +123,22 @@ public class JobServiceServiceImpl implements JobServiceService {
 
     @Override
     public boolean creaPrenotazione(String token, Prenotazione prenotazione) {
-Prenotazione p = prenotazioneRepository.findByProfessionistaId(prenotazione.getProfessionista().getIdProfessionista());
-Prenotazione giorno= prenotazioneRepository.findByGiorno(prenotazione.getData());
-Prenotazione ora= prenotazioneRepository.findByOra(prenotazione.getOra());
  Sessione sessione = sessioneRepository.findByToken(token);
         if (sessione != null) {
+            boolean flag=true;
+            List<Prenotazione> p= prenotazioneRepository.findAllPren();
+for(Prenotazione i: p){
+    if(i.getProfessionista().getIdProfessionista()== prenotazione.getProfessionista().getIdProfessionista() && i.getData().equals(prenotazione.getData()) && i.getOra().equals(prenotazione.getOra()))
+    flag=false;
+        }
+if(flag){
             prenotazione.setUtente(sessione.getUtente());
             prenotazioneRepository.save(prenotazione);
             return true;
         }
+else{
+        return false;
+        }}
         return false;
         }
     
@@ -144,18 +146,26 @@ Prenotazione ora= prenotazioneRepository.findByOra(prenotazione.getOra());
 
      @Override
     public boolean creaPreferito(String token, Preferito preferito) {
-       //Preferito u= (Preferito) preferitoRepository.findAllPreferiti(preferito.getUtente().getId());
-       //Preferito p = preferitoRepository.findAllPreferitiprof(preferito.getProfessionista().getIdProfessionista(), preferito.getUtente().getId());
+     
  Sessione sessione = sessioneRepository.findByToken(token);
-        if (sessione != null) {
+          if (sessione != null) {
+              boolean flag= true;
+        List<Preferito> u= preferitoRepository.findByUtenteId(sessione.getUtente().getId());
+ for(Preferito i: u){
+     if(i.getProfessionista().getIdProfessionista()== preferito.getProfessionista().getIdProfessionista())
+            flag=false;
+     }
+     if(flag){
             preferito.setUtente(sessione.getUtente());
-            //if(p==null){
+          
             preferitoRepository.save(preferito);
             return true;
         }
-    //}
+         else{
         return false;
-        }
+        }}
+    return false;
+    }
 
     @Override
     public List<Prenotazione> findAllPrenotazioni(String token) {
@@ -180,6 +190,17 @@ Prenotazione ora= prenotazioneRepository.findByOra(prenotazione.getOra());
 
     }
 
+    
+        @Override
+    public void cancellaPreferito(String token, Long id_preferito) {
+        Sessione sessione = sessioneRepository.findByToken(token);
+        if (sessione != null) {
+            preferitoRepository.delete(id_preferito);
+        }
+
+    }
+
+    
 
     @Override
     public List<Categoria> findAllCategorie() {
@@ -199,12 +220,12 @@ Prenotazione ora= prenotazioneRepository.findByOra(prenotazione.getOra());
     }
 
     @Override
-    public Vector<String> GetAllNomiCat() {
+    public List<String> GetAllNomiCat() {
         return categoriaRepository.GetAllCategorieNome();
     }
 
     @Override
-    public Vector<String> findAllCityProf() {
+    public List<String> findAllCityProf() {
         return professionistaRepository.findAllCityProf();
     }
     

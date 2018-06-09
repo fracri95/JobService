@@ -2,9 +2,7 @@ package it.univaq.disim.mobile.jobservice.web;
 
 import it.univaq.disim.mobile.jobservice.business.JobServiceService;
 import it.univaq.disim.mobile.jobservice.business.domain.Professionista;
-import it.univaq.disim.mobile.jobservice.business.domain.Preferito;
 import java.util.List;
-import java.util.Vector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,8 +56,8 @@ public class ProfessionistaController {
 
         
     @GetMapping("/allcitta")
-    public Vector<String> AllCityProf(){
-        Vector<String> AllCityProf = service.findAllCityProf();
+    public List<String> AllCityProf(){
+        List<String> AllCityProf = service.findAllCityProf();
         return AllCityProf;
     }
 }

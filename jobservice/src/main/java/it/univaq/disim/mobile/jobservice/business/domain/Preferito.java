@@ -7,7 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -20,7 +22,7 @@ public class Preferito implements java.io.Serializable {
     @Column(name = "id_preferito")
     private Long id;
     
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_professionista", nullable = false)
     private Professionista professionista;
    
@@ -28,6 +30,8 @@ public class Preferito implements java.io.Serializable {
     @ManyToOne
     @JoinColumn(name = "id_utente", nullable = false)
     private Utente utente;
+    
+    
 
     public void setIdPreferito(Long id){
         this.id=id;

@@ -57,6 +57,8 @@ public class Professionista implements java.io.Serializable {
     
     @Column(name="citta", nullable = false, length = 255)
     private String citta;
+        @Column(name="img", nullable = false)
+    private String img;
 
     @JsonIgnore
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "professionista", fetch = FetchType.LAZY)
@@ -120,6 +122,15 @@ public class Professionista implements java.io.Serializable {
     
     public String getCitta(){
         return citta;
+    }
+    
+        
+    public void setImg(String img){
+        this.img=img;
+    }
+    
+    public String getImg(){
+        return img;
     }
     
     public void setEmailprofessionista(String emailprofessionista){

@@ -2,7 +2,6 @@ package it.univaq.disim.mobile.jobservice.business.impl;
 
 import it.univaq.disim.mobile.jobservice.business.domain.Categoria;
 import java.util.List;
-import java.util.Vector;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -25,7 +24,7 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
     Long findIdbyNome(@Param("categoria")String nome); //risolto
     
     @Query(value="SELECT DISTINCT nome FROM categorie", nativeQuery=true)
-    Vector<String> GetAllCategorieNome();
+    List<String> GetAllCategorieNome();
     
    
 }

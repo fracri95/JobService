@@ -4,6 +4,7 @@ import it.univaq.disim.mobile.jobservice.business.JobServiceService;
 import it.univaq.disim.mobile.jobservice.business.domain.Preferito;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,9 +35,17 @@ public class PreferitoController {
         if (result) {
             response.setMessage("Ok");
         } else {
-            response.setMessage("User already exist");
+            response.setMessage("Il preferito esiste già");
         }
         return response;
-    }  
+    } 
+    
+     @DeleteMapping("/{token}/{idPreferito}")
+    public Response cancellaPreferito(@PathVariable(value = "token") String token, @PathVariable(value = "idPreferito") Long id_preferito) {
+        service.cancellaPreferito(token, id_preferito);
+        Response<Object> response = new Response<>(true, "preferito cancellato");
+
+        return response;
+    }
     
 }

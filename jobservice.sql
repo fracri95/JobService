@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 07, 2018 alle 00:19
+-- Creato il: Giu 09, 2018 alle 18:44
 -- Versione del server: 10.1.22-MariaDB
 -- Versione PHP: 7.1.4
 
@@ -44,7 +44,7 @@ INSERT INTO `categorie` (`id_categoria`, `nome`) VALUES
 (4, 'Baby Sitter'),
 (5, 'Cameriere'),
 (6, 'Commercialista'),
-(7, 'Elettrecista'),
+(7, 'Elettricista'),
 (8, 'Idraulico'),
 (9, 'Falegname'),
 (10, 'Fabbro'),
@@ -72,7 +72,9 @@ INSERT INTO `preferiti` (`id_preferito`, `id_professionista`, `id_utente`) VALUE
 (4, 13, 4),
 (5, 12, 5),
 (6, 14, 5),
-(7, 13, 5);
+(11, 14, 4),
+(15, 13, 5),
+(16, 16, 5);
 
 -- --------------------------------------------------------
 
@@ -101,7 +103,10 @@ INSERT INTO `prenotazioni` (`id_prenotazione`, `giorno`, `ora`, `id_utente`, `id
 (6, '2018-07-26', '20:00', 4, 18),
 (7, '2018-10-17', '19:00', 4, 12),
 (8, '2018-06-28', '15:00', 4, 10),
-(9, '2018-06-27', '15:00', 5, 1);
+(9, '2018-06-27', '15:00', 5, 1),
+(10, '2018-06-29', '20:00', 5, 15),
+(12, '2018-06-29', '19:00', 5, 15),
+(13, '2018-06-29', '15:00', 4, 15);
 
 -- --------------------------------------------------------
 
@@ -117,35 +122,36 @@ CREATE TABLE `professionisti` (
   `citta` varchar(255) NOT NULL,
   `eta` int(3) NOT NULL,
   `telefono` varchar(10) NOT NULL,
-  `id_categoria` int(10) UNSIGNED NOT NULL
+  `id_categoria` int(10) UNSIGNED NOT NULL,
+  `img` varchar(455) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dump dei dati per la tabella `professionisti`
 --
 
-INSERT INTO `professionisti` (`id_professionista`, `nomeprofessionista`, `cognomeprofessionista`, `email`, `citta`, `eta`, `telefono`, `id_categoria`) VALUES
-(1, 'Luca', 'Rossi', 'lucarossi@gmail.com', 'Teramo', 28, '3245876950', 1),
-(2, 'Mario', 'Bianchi', 'mariobianchi@gmail.com', 'Chieti', 56, '3482918274', 1),
-(3, 'Ale', 'Nuzio', 'alenuzio@libero.it', 'Pescara', 52, '3212345607', 2),
-(4, 'Gianluca', 'Frisco', 'gianf@hotmail.com', 'Tollo', 44, '3295445607', 2),
-(5, 'Laura', 'Verdi', 'laura.verdi@gmail.com', 'San Benedetto Del Tronto', 45, '3493872819', 3),
-(6, 'Moana', 'Capo', 'moana.capo@gmail.com', 'Teramo', 28, '3212345432', 4),
-(7, 'Simona', 'Petraccia', 'simona.pet@gmail.com', 'Chieti', 30, '3293874632', 5),
-(8, 'Alessio', 'Sante', 'alessiosante@gmail.com', 'Chieti', 35, '3212345678', 6),
-(9, 'Benedetto', 'Di Carlo', 'benedettodicarlo@gmail.com', 'Pescara', 45, '3283452380', 7),
-(10, 'Fabio', 'Sante', 'fabiosante@gmail.com', 'San Benedetto', 26, '324839275', 8),
-(11, 'Marco', 'Di Basilico', 'marcodibasilico@gmail.com', 'San Benedetto del Tronto', 23, '3214900332', 9),
-(12, 'Marco', 'Aviero', 'marcoaviero@gmail.com', 'Tollo', 32, '329883002', 10),
-(13, 'Lucrezia', 'Leone', 'leonelucrezia@gmail.com', 'Roma', 50, '3313459689', 4),
-(14, 'Sharon', 'Valle', 's.valle@gmail.com', 'Roma', 58, '3245674321', 5),
-(15, 'Mario', 'Di Camillo', 'marcodc@gmail.com', 'Ancona', 65, '3456784321', 7),
-(16, 'Benedetta', 'Bonaduce', 'benedettabona@gmail.com', 'Ancona', 25, '3245968574', 10),
-(17, 'Benedetto', 'Di Carlo', 'benedettodicarlo@gmail.com', 'Pescara', 36, '3212345678', 6),
-(18, 'Giulio', 'Manetta', 'manettag@gmail.com', 'Firenze', 48, '3234567678', 8),
-(19, 'Nicola', 'Pichelli', 'nicolap@gmail.com', 'Firenze', 45, '3456733212', 9),
-(20, 'Rita', 'Di Carlo', 'rita.dic@gmail.com', 'Teramo', 52, '3245645321', 3),
-(22, 'Antonio', 'Bove', 'boveantonio.geom@tiscali.it', 'Avezzano', 50, '3398217352', 11);
+INSERT INTO `professionisti` (`id_professionista`, `nomeprofessionista`, `cognomeprofessionista`, `email`, `citta`, `eta`, `telefono`, `id_categoria`, `img`) VALUES
+(1, 'Luca', 'Rossi', 'lucarossi@gmail.com', 'Teramo', 28, '3245876950', 1, 'assets/icon/foto_profilo_default.png'),
+(2, 'Mario', 'Bianchi', 'mariobianchi@gmail.com', 'Chieti', 56, '3482918274', 1, 'assets/icon/15.jpg'),
+(3, 'Ale', 'Nuzio', 'alenuzio@libero.it', 'Pescara', 52, '3212345607', 2, 'assets/icon/foto_profilo_default.png'),
+(4, 'Gianluca', 'Frisco', 'gianf@hotmail.com', 'Tollo', 44, '3295445607', 2, 'assets/icon/13.jpg'),
+(5, 'Laura', 'Verdi', 'laura.verdi@gmail.com', 'San Benedetto Del Tronto', 45, '3493872819', 3, 'assets/icon/5.jpg'),
+(6, 'Moana', 'Capo', 'moana.capo@gmail.com', 'Teramo', 28, '3212345432', 4, 'assets/icon/1.jpg'),
+(7, 'Simona', 'Petraccia', 'simona.pet@gmail.com', 'Chieti', 30, '3293874632', 5, 'assets/icon/foto_profilo_default.png'),
+(8, 'Alessio', 'Sante', 'alessiosante@gmail.com', 'Chieti', 35, '3212345678', 6, 'assets/icon/foto_profilo_default.png'),
+(9, 'Benedetto', 'Di Carlo', 'benedettodicarlo@gmail.com', 'Pescara', 45, '3283452380', 7, 'assets/icon/foto_profilo_default.png'),
+(10, 'Fabio', 'Sante', 'fabiosante@gmail.com', 'San Benedetto', 26, '324839275', 8, 'assets/icon/foto_profilo_default.png'),
+(11, 'Marco', 'Di Basilico', 'marcodibasilico@gmail.com', 'San Benedetto del Tronto', 23, '3214900332', 9, 'assets/icon/foto_profilo_default.png'),
+(12, 'Marco', 'Aviero', 'marcoaviero@gmail.com', 'Tollo', 32, '329883002', 10, 'assets/icon/foto_profilo_default.png'),
+(13, 'Lucrezia', 'Leone', 'leonelucrezia@gmail.com', 'Roma', 50, '3313459689', 4, 'assets/icon/foto_profilo_default.png'),
+(14, 'Sharon', 'Valle', 's.valle@gmail.com', 'Roma', 58, '3245674321', 5, 'assets/icon/foto_profilo_default.png'),
+(15, 'Mario', 'Di Camillo', 'marcodc@gmail.com', 'Ancona', 65, '3456784321', 7, 'assets/icon/foto_profilo_default.png'),
+(16, 'Benedetta', 'Bonaduce', 'benedettabona@gmail.com', 'Ancona', 25, '3245968574', 10, 'assets/icon/3.jpg'),
+(17, 'Benedetto', 'Di Carlo', 'benedettodicarlo@gmail.com', 'Pescara', 36, '3212345678', 6, 'assets/icon/foto_profilo_default.png'),
+(18, 'Giulio', 'Manetta', 'manettag@gmail.com', 'Firenze', 48, '3234567678', 8, 'assets/icon/foto_profilo_default.png'),
+(19, 'Nicola', 'Pichelli', 'nicolap@gmail.com', 'Firenze', 45, '3456733212', 9, 'assets/icon/foto_profilo_default.png'),
+(20, 'Rita', 'Di Carlo', 'rita.dic@gmail.com', 'Teramo', 52, '3245645321', 3, 'assets/icon/foto_profilo_default.png'),
+(22, 'Antonio', 'Bove', 'boveantonio.geom@tiscali.it', 'Chieti', 50, '3398217352', 11, 'assets/icon/foto_profilo_default.png');
 
 -- --------------------------------------------------------
 
@@ -300,7 +306,8 @@ INSERT INTO `sessioni` (`sessione_id`, `token`, `id_utente`) VALUES
 (281, '3375961151576073589', 4),
 (282, '3075730248192732663', 4),
 (283, '4825582570377769054', 4),
-(287, '3842872625013857549', 5);
+(295, '1172891568372420447', 5),
+(306, '6680997361610667721', 4);
 
 -- --------------------------------------------------------
 
@@ -390,12 +397,12 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT per la tabella `preferiti`
 --
 ALTER TABLE `preferiti`
-  MODIFY `id_preferito` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_preferito` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT per la tabella `prenotazioni`
 --
 ALTER TABLE `prenotazioni`
-  MODIFY `id_prenotazione` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_prenotazione` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT per la tabella `professionisti`
 --
@@ -405,7 +412,7 @@ ALTER TABLE `professionisti`
 -- AUTO_INCREMENT per la tabella `sessioni`
 --
 ALTER TABLE `sessioni`
-  MODIFY `sessione_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=288;
+  MODIFY `sessione_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=307;
 --
 -- AUTO_INCREMENT per la tabella `utenti`
 --
